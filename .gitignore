@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.spec.bak
+.pytest_cache/
+*.log
+*.tmp
+~/.config/AnythingToPDF/
+%APPDATA%/AnythingToPDF/
+.DS_Store
+Thumbs.db
