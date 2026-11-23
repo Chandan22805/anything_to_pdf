@@ -1,14 +1,23 @@
 # Anything to PDF — Windows PyInstaller spec
-# Build on Windows with:  pyinstaller anything_to_pdf.spec
+# Build from the PROJECT ROOT with:
+#   pyinstaller packaging\anything_to_pdf.spec
+# Do NOT run from inside the packaging\ folder.
 
 import sys
 from pathlib import Path
 
 block_cipher = None
 
+# Resolve paths relative to this spec file so the build works regardless
+# of which directory PyInstaller is invoked from.
+SPEC_DIR = Path(SPECPATH)          # directory containing this .spec file
+PROJECT_ROOT = SPEC_DIR.parent     # one level up = project root
+MAIN_SCRIPT = str(PROJECT_ROOT / 'main.py')
+SRC_PATH = str(PROJECT_ROOT / 'src')
+
 a = Analysis(
-    ['main.py'],
-    pathex=[str(Path('.').resolve())],
+    [MAIN_SCRIPT],
+    pathex=[str(PROJECT_ROOT), SRC_PATH],
     binaries=[],
     datas=[],
     hiddenimports=[
